@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import react, { useState } from 'react';
+import MovieList from './Components/MovieList/MovieList';
+import { moviesData } from './data';
+import FilterByName from './Components/FilterByName/FilterByName';
+import AddMovie from './Components/AddMovie/AddMovie';
+import FilterByRate from './Components/Rating/Rating';
 
 function App() {
+  const [movies,setMovies] = useState(moviesData);
+  const[inputSearch,setInputSearch]= useState("");
+  const [rating, setRating] = useState(1);
+
+  //add
+  const add= (newMovie)=> {
+    setMovies([...movies,newMovie]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Checkpoint Movie App</h1>
+      <FilterByName inputSearch={inputSearch} setInputSearch={setInputSearch}/>
+      <FilterByRate rating={rating} setRating={setRating}/>
+      <AddMovie add={add} />
+      <MovieList movies={movies} inputSearch={inputSearch} rating={rating} />
+    
     </div>
   );
 }
