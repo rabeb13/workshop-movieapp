@@ -1,5 +1,5 @@
 import './App.css';
-import react, { useState } from 'react';
+import { useState } from 'react';
 import MovieList from './Components/MovieList/MovieList';
 import { moviesData } from './data';
 import FilterByName from './Components/FilterByName/FilterByName';
@@ -19,9 +19,13 @@ function App() {
   return (
     <div className="App">
       <h1>Checkpoint Movie App</h1>
+      {/* Filterbyname */}
       <FilterByName inputSearch={inputSearch} setInputSearch={setInputSearch}/>
+      {/* Filterbyrate */}
       <FilterByRate rating={rating} setRating={setRating}/>
+      {/* AddMovie */}
       <AddMovie add={add} />
+      {/* MovieList */}
       <MovieList movies={movies} inputSearch={inputSearch} rating={rating} />
     
     </div>
